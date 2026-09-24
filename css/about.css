@@ -1,0 +1,117 @@
+/* =============================================
+   NUMEN — Sección "Quiénes somos"
+   ============================================= */
+
+.about {
+  background: var(--bg-light);
+  color: var(--text-on-light);
+  padding: var(--space-xl) 0;
+}
+
+.about__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+.about__visual {
+  position: relative;
+}
+
+/* Marco decorativo */
+.about__frame {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: var(--bg-warm);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Isotipo centrado como elemento gráfico */
+.about__isotipo {
+  width: 60%;
+  max-width: 220px;
+  opacity: 0.12;
+}
+
+/* Línea decorativa exterior */
+.about__frame::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  width: 80px;
+  height: 80px;
+  border-top: 1px solid var(--accent);
+  border-left: 1px solid var(--accent);
+}
+
+.about__frame::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  right: -12px;
+  width: 80px;
+  height: 80px;
+  border-bottom: 1px solid var(--accent);
+  border-right: 1px solid var(--accent);
+}
+
+.about__text {
+  padding-left: var(--space-md);
+}
+
+.about__quote {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  color: var(--text-on-light);
+  margin-bottom: var(--space-md);
+}
+
+.about__quote span {
+  color: var(--accent);
+}
+
+.about__body {
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.9;
+  color: rgba(0,0,0,0.65);
+  margin-bottom: var(--space-md);
+}
+
+/* Valores en fila */
+.about__values {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.about__value-item {
+  text-align: center;
+}
+
+.about__value-number {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--accent);
+  display: block;
+  line-height: 1;
+}
+
+.about__value-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.45);
+  margin-top: 0.3rem;
+  display: block;
+}

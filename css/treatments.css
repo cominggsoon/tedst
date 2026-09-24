@@ -1,0 +1,88 @@
+/* =============================================
+   NUMEN — Sección Tratamientos (preview)
+   ============================================= */
+
+.treatments {
+  background: var(--bg-warm);
+  color: var(--text-on-light);
+  padding: var(--space-xl) 0;
+}
+
+.treatments__header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.treatments__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(0,0,0,0.1);
+}
+
+.treatment-card {
+  background: var(--bg-warm);
+  padding: var(--space-lg) var(--space-md);
+  position: relative;
+  transition: background var(--transition-base);
+  text-align: center;
+}
+
+.treatment-card:hover {
+  background: var(--color-white);
+}
+
+.treatment-card__number {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  line-height: 1;
+  color: rgba(0,0,0,0.06);
+  margin-bottom: 0.5rem;
+}
+
+.treatment-card__icon {
+  width: 32px;
+  height: 1px;
+  background: var(--accent);
+  margin: 0 auto var(--space-md);
+}
+
+.treatment-card__title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+  color: var(--text-on-light);
+}
+
+.treatment-card__desc {
+  font-size: 0.8rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(0,0,0,0.55);
+}
+
+.treatment-card__coming {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-top: var(--space-sm);
+  display: block;
+}
+
+/* Footer de la sección */
+.treatments__footer {
+  text-align: center;
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.treatments__footer-text {
+  font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  opacity: 0.5;
+  margin-bottom: var(--space-md);
+}

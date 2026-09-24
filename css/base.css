@@ -1,0 +1,166 @@
+/* =============================================
+   NUMEN — Estilos base
+   ============================================= */
+
+body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 16px;
+  color: var(--text-on-dark);
+  background-color: var(--bg-dark);
+}
+
+/* Contenedor principal */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* Tipografía general */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+h4, h5, h6 {
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.label--accent {
+  color: var(--accent);
+  opacity: 1;
+}
+
+/* Separador decorativo */
+.divider {
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+  margin: var(--space-md) auto;
+}
+
+.divider--left {
+  margin-left: 0;
+}
+
+/* Sección genérica */
+.section {
+  padding: var(--space-xl) 0;
+}
+
+.section--dark {
+  background: var(--bg-dark);
+  color: var(--text-on-dark);
+}
+
+.section--light {
+  background: var(--bg-light);
+  color: var(--text-on-light);
+}
+
+.section--warm {
+  background: var(--bg-warm);
+  color: var(--text-on-light);
+}
+
+.section--wine {
+  background: var(--accent);
+  color: var(--text-on-dark);
+}
+
+.section__label {
+  margin-bottom: var(--space-sm);
+}
+
+.section__title {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  margin-bottom: var(--space-md);
+}
+
+.section__subtitle {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.8;
+  max-width: 560px;
+  opacity: 0.8;
+}
+
+/* Botones */
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 1.1rem 2.5rem;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn--primary {
+  background: var(--accent);
+  color: var(--color-white);
+  border: 1px solid var(--accent);
+}
+
+.btn--primary:hover {
+  background: transparent;
+  color: var(--accent);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--color-white);
+  border: 1px solid rgba(255,255,255,0.4);
+}
+
+.btn--outline:hover {
+  border-color: var(--color-white);
+  background: rgba(255,255,255,0.05);
+}
+
+.btn--outline-dark {
+  background: transparent;
+  color: var(--color-black);
+  border: 1px solid rgba(0,0,0,0.3);
+}
+
+.btn--outline-dark:hover {
+  border-color: var(--color-black);
+  background: rgba(0,0,0,0.04);
+}
+
+/* Scroll reveal: estado inicial */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ease-luxury), transform 0.8s var(--ease-luxury);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal--delay-1 { transition-delay: 0.1s; }
+.reveal--delay-2 { transition-delay: 0.25s; }
+.reveal--delay-3 { transition-delay: 0.4s; }
+.reveal--delay-4 { transition-delay: 0.55s; }

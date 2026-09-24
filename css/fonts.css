@@ -1,0 +1,53 @@
+/* =============================================
+   NUMEN — Fuentes locales
+   Coloca los archivos en:
+     fonts/BebasNeue/BebasNeue-Regular.woff2
+     fonts/BebasNeue/BebasNeue-Regular.woff
+     fonts/Montserrat/Montserrat-Light.woff2
+     fonts/Montserrat/Montserrat-Regular.woff2
+     fonts/Montserrat/Montserrat-Medium.woff2
+     fonts/Montserrat/Montserrat-SemiBold.woff2
+   ============================================= */
+
+/* Bebas Neue — titulares / logotipo */
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('../fonts/BebasNeue/BebasNeue-Regular.woff2') format('woff2'),
+       url('../fonts/BebasNeue/BebasNeue-Regular.woff')  format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Montserrat — cuerpo de texto */
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat/Montserrat-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat/Montserrat-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat/Montserrat-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat/Montserrat-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}

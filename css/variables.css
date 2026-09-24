@@ -1,0 +1,45 @@
+/* =============================================
+   NUMEN Medical Clinic — Design Tokens
+   Manual de Identidad Visual v2
+   ============================================= */
+
+:root {
+  /* Paleta de color oficial */
+  --color-black:      #000000;  /* C0 M0 Y0 K100 */
+  --color-white:      #FFFFFF;  /* C0 M0 Y0 K0   */
+  --color-wine:       #491620;  /* C0 M70 Y56 K71 — color Numen */
+  --color-warm-gray:  #D7D0CA;  /* C0 M3 Y6 K16  */
+
+  /* Alias semánticos */
+  --bg-dark:          var(--color-black);
+  --bg-light:         var(--color-white);
+  --bg-warm:          var(--color-warm-gray);
+  --accent:           var(--color-wine);
+  --text-on-dark:     var(--color-white);
+  --text-on-light:    var(--color-black);
+
+  /* Tipografía */
+  --font-display:     'Bebas Neue', 'Arial Narrow', Arial, sans-serif;
+  --font-body:        'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  /* Espaciado */
+  --space-xs:   0.5rem;
+  --space-sm:   1rem;
+  --space-md:   2rem;
+  --space-lg:   4rem;
+  --space-xl:   7rem;
+  --space-xxl:  12rem;
+
+  /* Bordes */
+  --radius-sm:  2px;
+  --radius-md:  4px;
+
+  /* Transiciones */
+  --ease-luxury: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-base: 0.4s var(--ease-luxury);
+
+  /* Layout */
+  --container-max: 1200px;
+  --gutter: 2rem;
+  --nav-height: 80px;
+}

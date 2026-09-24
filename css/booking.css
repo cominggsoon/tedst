@@ -1,0 +1,80 @@
+/* =============================================
+   NUMEN — Sección "Agenda tu cita"
+   ============================================= */
+
+.booking {
+  background: var(--accent);
+  color: var(--text-on-dark);
+  padding: var(--space-xl) 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Textura de fondo sutil */
+.booking::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 40px,
+    rgba(255,255,255,0.015) 40px,
+    rgba(255,255,255,0.015) 41px
+  );
+  pointer-events: none;
+}
+
+.booking__content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.booking__eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  font-weight: 500;
+  margin-bottom: var(--space-sm);
+  display: block;
+}
+
+.booking__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1;
+  margin-bottom: var(--space-md);
+}
+
+.booking__desc {
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.8;
+  opacity: 0.75;
+  margin-bottom: var(--space-lg);
+}
+
+.booking__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 0.8rem 1.6rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 500;
+  opacity: 0.7;
+}
+
+.booking__badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+}

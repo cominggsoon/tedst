@@ -1,0 +1,111 @@
+/* =============================================
+   NUMEN — Responsive
+   ============================================= */
+
+/* — Tablet landscape (< 1024px) ————————————— */
+@media (max-width: 1024px) {
+  :root {
+    --gutter: 1.5rem;
+    --space-xl: 5rem;
+    --space-xxl: 8rem;
+  }
+
+  .about__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .about__frame {
+    aspect-ratio: 16/7;
+    max-height: 280px;
+  }
+
+  .about__text {
+    padding-left: 0;
+  }
+
+  .about__values {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .raffle__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .footer__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+  }
+
+  .footer__brand {
+    grid-column: 1 / -1;
+  }
+}
+
+/* — Tablet portrait (< 768px) —————————————— */
+@media (max-width: 768px) {
+  :root {
+    --gutter: 1.25rem;
+    --space-xl: 4rem;
+    --nav-height: 64px;
+  }
+
+  .treatments__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about__values {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+
+  .hero__cta {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero__line {
+    display: none;
+  }
+
+  .footer__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    gap: var(--space-sm);
+    text-align: center;
+  }
+}
+
+/* — Móvil (< 480px) ————————————————————————— */
+@media (max-width: 480px) {
+  :root {
+    --gutter: 1rem;
+    --space-xl: 3rem;
+    --space-lg: 2.5rem;
+  }
+
+  .about__values {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .about__value-item {
+    text-align: left;
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-sm);
+  }
+
+  .raffle__form-wrapper {
+    padding: var(--space-md) var(--space-sm);
+  }
+
+  .nav__badge {
+    display: none;
+  }
+}

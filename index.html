@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Numen Medical Clinic — Centro de bienestar y medicina estética de alta calidad. Próxima apertura en Valdemoro, Madrid.">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:title"       content="Numen Medical Clinic — Próximamente en Valdemoro">
+  <meta property="og:description" content="Un espacio diseñado para tu bienestar. Medicina estética de alta calidad. Próxima apertura en Calle Narváez 6, Valdemoro.">
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://www.numenmedicalclinic.es">
+  <title>Numen Medical Clinic — Centro de Bienestar & Wellness</title>
+
+  <!-- Favicon: icono de pestaña del navegador -->
+  <!-- Opción A (recomendada): coloca tu logo como favicon.ico en la raíz y descomenta: -->
+  <!-- <link rel="icon" type="image/x-icon" href="favicon.ico"> -->
+  <!-- Opción B: usando el monograma PNG directamente: -->
+  <link rel="icon" type="image/png" href="img/logos/monograma-nm.png">
+  <link rel="apple-touch-icon" href="img/logos/monograma-nm.png">
+
+  <!-- Google Fonts fallback (funciona sin archivos locales) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/fonts.css">
+
+  <style>
+    /* ── BASE ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-weight: 300;
+      background: #000;
+      color: #fff;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ── TOKENS ────────────────────────────────────── */
+    :root {
+      --black:     #000000;
+      --white:     #FFFFFF;
+      --wine:      #491620;
+      --warm:      #D7D0CA;
+      --ease:      cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --nav-h:     80px;
+    }
+
+    /* ── NAV ───────────────────────────────────────── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nav-h);
+      display: flex; align-items: center;
+      transition: background 0.5s var(--ease);
+      padding: 0 2rem;
+    }
+    .nav.scrolled {
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .nav__inner {
+      width: 100%; max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    /* Logo en nav */
+    .nav__logo { display: flex; align-items: center; }
+    .nav__logo img {
+      /* PNG cuadrado con padding interno: lo mostramos ancho para que el texto sea legible */
+      width: 160px; height: auto;
+      /* El padding del PNG añade espacio, compensamos con margen negativo vertical */
+      margin: -18px 0;
+      filter: brightness(1);
+    }
+    /* Fallback texto si no carga la imagen */
+    .nav__logo-fallback {
+      font-family: 'Bebas Neue', 'Arial Narrow', Arial, sans-serif;
+      font-size: 2rem; letter-spacing: 0.15em; color: #fff;
+      display: none;
+    }
+    .nav__right { display: flex; align-items: center; gap: 1.5rem; }
+    .nav__badge {
+      font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.2); padding: 0.4rem 1rem;
+      font-weight: 500; opacity: 0.65;
+    }
+    .nav__cta {
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+      font-weight: 500; padding: 0.6rem 1.4rem;
+      background: var(--wine); color: #fff;
+      transition: opacity 0.3s;
+    }
+    .nav__cta:hover { opacity: 0.8; }
+    .nav__ig {
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 50%;
+      opacity: 0.6;
+      transition: opacity 0.3s, border-color 0.3s;
+    }
+    .nav__ig:hover { opacity: 1; border-color: rgba(255,255,255,0.5); }
+    .nav__ig svg { width: 16px; height: 16px; fill: #fff; }
+
+    /* ── HERO ──────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      background: var(--black);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      padding-top: var(--nav-h);
+    }
+    /* Foto de fondo */
+    .hero__bg {
+      position: absolute; inset: 0;
+      background-image: url('img/foto-hero.jpg');
+      background-size: cover; background-position: center 20%;
+      opacity: 0.32; /* sutil — la foto respira sin ahogar el texto */
+    }
+    /* Overlay oscuro + gradiente vino abajo */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0; z-index: 1;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.6) 100%),
+        radial-gradient(ellipse 80% 40% at 50% 100%, rgba(73,22,32,0.45) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    /* Línea lateral decorativa */
+    .hero__line {
+      position: absolute; left: 2rem; top: 50%; transform: translateY(-50%);
+      width: 1px; height: 100px; z-index: 2;
+      background: linear-gradient(to bottom, transparent, var(--wine), transparent);
+      opacity: 0.6;
+    }
+    .hero__line-r {
+      position: absolute; right: 2rem; top: 50%; transform: translateY(-50%);
+      width: 1px; height: 100px; z-index: 2;
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.12), transparent);
+    }
+
+    .hero__content {
+      text-align: center; z-index: 2;
+      padding: 0 2rem; max-width: 860px; position: relative;
+    }
+
+    /* Pre-label */
+    .hero__pre {
+      font-size: 0.6rem; letter-spacing: 0.45em; text-transform: uppercase;
+      color: rgba(255,255,255,0.55); font-weight: 500;
+      display: flex; align-items: center; justify-content: center; gap: 1rem;
+      margin-bottom: 3rem;
+      opacity: 0; animation: fadeUp 1s var(--ease) 0.2s forwards;
+    }
+    .hero__pre::before, .hero__pre::after {
+      content: ''; flex: 1; max-width: 60px; height: 1px;
+      background: rgba(255,255,255,0.25); opacity: 1;
+    }
+
+    /* Logo principal — imagen */
+    .hero__logo-wrap {
+      margin-bottom: 1.5rem;
+      opacity: 0; animation: fadeUp 1.2s var(--ease) 0.4s forwards;
+    }
+    .hero__logo-img {
+      /* PNG cuadrado con padding — mostramos ancho total para que el texto sea grande */
+      width: clamp(280px, 50vw, 560px);
+      height: auto;
+      margin: -4% auto; /* recorta el espacio superior e inferior del PNG */
+    }
+    /* Fallback tipográfico si la imagen no carga */
+    .hero__brand-text {
+      font-family: 'Bebas Neue', 'Arial Narrow', Arial, sans-serif;
+      font-size: clamp(5rem, 18vw, 14rem);
+      line-height: 0.9; letter-spacing: 0.04em; color: #fff;
+      display: none; /* se muestra via JS si la img falla */
+    }
+
+    /* Subtítulo clínica */
+    .hero__clinic {
+      font-size: clamp(0.55rem, 1.1vw, 0.75rem); letter-spacing: 0.5em;
+      text-transform: uppercase; font-weight: 400; color: rgba(255,255,255,0.5);
+      margin-bottom: 3.5rem;
+      opacity: 0; animation: fadeUp 1s var(--ease) 0.7s forwards;
+    }
+
+    /* Separador */
+    .hero__sep {
+      width: 1px; height: 50px;
+      background: linear-gradient(to bottom, var(--wine), transparent);
+      margin: 0 auto 3rem;
+      opacity: 0; animation: fadeUp 1s var(--ease) 0.9s forwards;
+    }
+
+    /* Descripción */
+    .hero__desc {
+      font-size: clamp(0.85rem, 1.5vw, 1rem); font-weight: 300;
+      line-height: 1.95; color: rgba(255,255,255,0.65);
+      max-width: 500px; margin: 0 auto 3rem;
+      letter-spacing: 0.02em;
+      opacity: 0; animation: fadeUp 1s var(--ease) 1.1s forwards;
+    }
+
+    /* CTAs */
+    .hero__cta {
+      display: flex; align-items: center; justify-content: center;
+      gap: 1rem; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 1s var(--ease) 1.3s forwards;
+    }
+
+    /* Localización debajo de los CTAs */
+    .hero__location {
+      margin-top: 3rem;
+      font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+      opacity: 0.3; font-weight: 400;
+      opacity: 0; animation: fadeIn 1s var(--ease) 1.8s forwards;
+    }
+
+    /* Scroll indicator */
+    .hero__scroll {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      opacity: 0; animation: fadeIn 1s var(--ease) 2.2s forwards;
+    }
+    .hero__scroll span { font-size: 0.5rem; letter-spacing: 0.35em; text-transform: uppercase; opacity: 0.3; }
+    .hero__scroll-bar { width: 1px; height: 36px; background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent); animation: scrollPulse 2s ease-in-out infinite; }
+
+    /* ── BOTONES ────────────────────────────────────── */
+    .btn {
+      display: inline-block; font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.22em;
+      text-transform: uppercase; padding: 1.05rem 2.2rem;
+      transition: all 0.35s var(--ease); cursor: pointer;
+    }
+    .btn--wine { background: var(--wine); color: #fff; border: 1px solid var(--wine); }
+    .btn--wine:hover { background: transparent; color: var(--wine); }
+    .btn--ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.25); }
+    .btn--ghost:hover { border-color: rgba(255,255,255,0.6); }
+    .btn--ghost-dark { background: transparent; color: #000; border: 1px solid rgba(0,0,0,0.2); }
+    .btn--ghost-dark:hover { border-color: rgba(0,0,0,0.5); }
+
+    /* ── SECCIÓN GENÉRICA ────────────────────────────── */
+    .section { padding: 7rem 0; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    .section__label {
+      font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase;
+      font-weight: 500; color: rgba(255,255,255,0.45); margin-bottom: 1rem; display: block;
+    }
+    /* En secciones claras el label va oscuro */
+    .section--light .section__label { color: rgba(0,0,0,0.35); }
+    .section__title {
+      font-family: 'Bebas Neue', 'Arial Narrow', Arial, sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1;
+      letter-spacing: 0.05em; margin-bottom: 1.5rem;
+    }
+    .divider {
+      width: 36px; height: 1px; background: var(--wine); margin-bottom: 2rem;
+    }
+    .divider--center { margin-left: auto; margin-right: auto; }
+
+    /* ── REVEAL ANIMATIONS ──────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+    .reveal.d1 { transition-delay: 0.1s; }
+    .reveal.d2 { transition-delay: 0.22s; }
+    .reveal.d3 { transition-delay: 0.34s; }
+    .reveal.d4 { transition-delay: 0.46s; }
+    .reveal.is-visible { opacity: 1; transform: none; }
+
+    /* ── ABOUT / QUIÉNES SOMOS ──────────────────────── */
+    .about { background: var(--white); color: #000; }
+    .about__inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+    }
+    .about__visual {
+      position: relative;
+      aspect-ratio: 3/4;
+      background: #0d0608; /* casi negro con toque vino */
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    /* Esquinas decorativas */
+    .about__visual::before {
+      content: ''; position: absolute; top: -14px; left: -14px;
+      width: 55px; height: 55px;
+      border-top: 1px solid var(--wine); border-left: 1px solid var(--wine);
+      z-index: 2;
+    }
+    .about__visual::after {
+      content: ''; position: absolute; bottom: -14px; right: -14px;
+      width: 55px; height: 55px;
+      border-bottom: 1px solid var(--wine); border-right: 1px solid var(--wine);
+      z-index: 2;
+    }
+    /* Foto de fondo */
+    .about__visual > img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover; object-position: center top;
+    }
+    /* Monograma NM superpuesto sobre la foto */
+    .about__visual .about__monogram {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: transparent;
+    }
+    .about__visual .about__monogram img {
+      width: 70%; height: auto; object-fit: initial;
+      opacity: 0.18;
+      mix-blend-mode: soft-light;
+      filter: invert(1);
+    }
+    /* Gradiente sutil en la parte baja */
+    .about__visual .about__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(73,22,32,0.2) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .about__title {
+      font-family: 'Bebas Neue', 'Arial Narrow', Arial, sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.05;
+      margin-bottom: 1.5rem; color: #000;
+    }
+    .about__title span { color: #000; }
+    .about__body {
+      font-size: 0.92rem; font-weight: 300; line-height: 1.95;
+      color: #3a3a3a; margin-bottom: 1.2rem;
+    }
+    .about__pillars {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem; margin-top: 3rem; padding-top: 2.5rem;
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+    .about__pillar { text-align: center; }
+    .about__pillar-icon { font-size: 1.2rem; margin-bottom: 0.5rem; display: block; }
+    .about__pillar-label {
+      font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(0,0,0,0.4); font-weight: 500; display: block;
+    }
+
+    /* ── LOCALIZACIÓN ────────────────────────────────── */
+    .location { background: #000; color: #fff; padding: 5rem 0; }
+    .location__inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 3rem; flex-wrap: wrap;
+    }
+    .location__text {}
+    .location__address {
+      font-family: 'Bebas Neue', 'Arial Narrow', Arial, sans-serif;
+      font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.1;
+      margin-bottom: 0.75rem;
+    }
+    .location__detail {
+      font-size: 0.8rem; font-weight: 300; opacity: 0.45; letter-spacing: 0.08em;
+    }
+    .location__opening {
+      text-align: right;
+    }
+    .location__opening-label {
+      font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(255,255,255,0.4); font-weight: 500; margin-bottom: 0.5rem; display: block;
+    }
+    .location__opening-date {
+      font-family: 'Bebas Neue', 'Arial Narrow', Arial, sans-serif;
+      font-size: clamp(2rem, 5vw, 4rem); line-height: 1;
+      opacity: 0.15; /* mantenemos misterio, sin confirmar fecha */
+    }
+
+    /* ── SORTEO VIP ─────────────────────────────────── */
+    .raffle { background: #000; color: #fff; padding: 7rem 0; position: relative; overflow: hidden; }
+    .raffle::before {
+      content: '';
+      position: absolute; top: -20%; right: -15%;
+      width: 550px; height: 550px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(73,22,32,0.3) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .raffle::after {
+      content: '';
+      position: absolute; bottom: -20%; left: -10%;
+      width: 400px; height: 400px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(73,22,32,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .raffle__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; position: relative; z-index: 1; }
+
+    /* Info */
+    .raffle__eyebrow {
+      font-size: 0.6rem; letter-spacing: 0.4em; text-transform: uppercase;
+      color: rgba(255,255,255,0.45); font-weight: 500; margin-bottom: 1rem; display: block;
+    }
+    .raffle__title {
+      font-family: 'Bebas Neue', 'Arial Narrow', Arial, sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+    .raffle__desc { font-size: 0.88rem; font-weight: 300; line-height: 1.9; opacity: 0.6; margin-bottom: 2.5rem; }
+
+    /* Premio destacado */
+    .raffle__prize {
+      border-left: 2px solid var(--wine);
+      padding: 1.5rem 1.8rem;
+      background: rgba(73,22,32,0.08);
+      margin-bottom: 2rem;
+    }
+    .raffle__prize-label {
+      font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: rgba(255,255,255,0.5); font-weight: 500; margin-bottom: 0.6rem; display: block;
+    }
+    .raffle__prize-title { font-family: 'Bebas Neue', 'Arial Narrow', Arial, sans-serif; font-size: 1.6rem; margin-bottom: 0.5rem; }
+    .raffle__prize-desc { font-size: 0.8rem; font-weight: 300; opacity: 0.6; line-height: 1.7; }
+
+    /* Formulario */
+    .raffle__form-box {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 3rem 2.5rem;
+    }
+    .raffle__form-heading {
+      font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase;
+      opacity: 0.35; font-weight: 500; margin-bottom: 2.5rem; display: block;
+    }
+    .fg { margin-bottom: 1.8rem; }
+    .fg label {
+      font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
+      opacity: 0.4; font-weight: 500; display: block; margin-bottom: 0.5rem;
+    }
+    .fg input, .fg textarea {
+      width: 100%; background: transparent;
+      border: none; border-bottom: 1px solid rgba(255,255,255,0.12);
+      color: #fff; font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem; font-weight: 300;
+      padding: 0.7rem 0; outline: none;
+      transition: border-color 0.3s var(--ease);
+    }
+    .fg input::placeholder, .fg textarea::placeholder { color: rgba(255,255,255,0.18); font-style: italic; }
+    .fg input:focus, .fg textarea:focus { border-bottom-color: var(--wine); }
+    .fg textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
+    .fg input.err, .fg textarea.err { border-bottom-color: #c0392b; }
+    .fg .err-msg { font-size: 0.62rem; color: #e74c3c; margin-top: 0.3rem; display: none; }
+    .fg .err-msg.show { display: block; }
+    .form-submit-wrap { margin-top: 0.5rem; }
+    .form-submit-wrap .btn { width: 100%; text-align: center; }
+    .form-legal { font-size: 0.58rem; opacity: 0.25; line-height: 1.6; margin-top: 1rem; text-align: center; }
+
+    /* Éxito */
+    .raffle__success { display: none; text-align: center; padding: 3rem 0; }
+    .raffle__success.show { display: block; }
+    .raffle__success-icon { font-size: 2.5rem; margin-bottom: 1rem; color: var(--wine); }
+    .raffle__success-title { font-family: 'Bebas Neue', 'Arial Narrow', Arial, sans-serif; font-size: 2.2rem; margin-bottom: 0.75rem; }
+    .raffle__success-text { font-size: 0.88rem; font-weight: 300; opacity: 0.6; line-height: 1.8; }
+
+    /* ── TRATAMIENTOS ────────────────────────────────── */
+    .treatments { background: var(--warm); color: #000; }
+    .treatments__header { text-align: center; margin-bottom: 5rem; }
+    .treatments__subtitle { font-size: 0.9rem; font-weight: 300; opacity: 0.6; line-height: 1.8; max-width: 480px; margin: 0 auto; }
+    .treatments__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(0,0,0,0.08); }
+    .t-card { background: var(--warm); padding: 3rem 2rem; text-align: center; transition: background 0.3s var(--ease); }
+    .t-card:hover { background: #fff; }
+    .t-card__num { font-family: 'Bebas Neue', 'Arial Narrow', Arial, sans-serif; font-size: 3rem; color: rgba(0,0,0,0.06); line-height: 1; }
+    .t-card__bar { width: 28px; height: 1px; background: var(--wine); margin: 1rem auto; }
+    .t-card__title { font-family: 'Bebas Neue', 'Arial Narrow', Arial, sans-serif; font-size: 1.5rem; margin-bottom: 0.75rem; }
+    .t-card__desc { font-size: 0.78rem; font-weight: 300; line-height: 1.75; opacity: 0.55; }
+    .t-card__tag { font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--wine); margin-top: 1rem; display: block; font-weight: 500; }
+    .treatments__note { text-align: center; margin-top: 4rem; }
+    .treatments__note p { font-size: 0.72rem; opacity: 0.4; margin-bottom: 1.5rem; letter-spacing: 0.05em; }
+
+    /* ── AGENDA TU CITA ──────────────────────────────── */
+    .booking { background: var(--wine); color: #fff; padding: 7rem 0; text-align: center; position: relative; overflow: hidden; }
+    .booking::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(45deg, transparent, transparent 50px, rgba(255,255,255,0.012) 50px, rgba(255,255,255,0.012) 51px);
+      pointer-events: none;
+    }
+    .booking__inner { max-width: 600px; margin: 0 auto; position: relative; z-index: 1; }
+    .booking__eyebrow { font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; opacity: 0.55; font-weight: 500; margin-bottom: 1rem; display: block; }
+    .booking__title { font-family: 'Bebas Neue', 'Arial Narrow', Arial, sans-serif; font-size: clamp(2.8rem, 6vw, 5rem); line-height: 0.95; margin-bottom: 1.5rem; }
+    .booking__desc { font-size: 0.88rem; font-weight: 300; line-height: 1.85; opacity: 0.7; margin-bottom: 2.5rem; }
+    .booking__soon { display: inline-flex; align-items: center; gap: 0.75rem; border: 1px solid rgba(255,255,255,0.25); padding: 0.85rem 1.8rem; font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; font-weight: 500; opacity: 0.65; }
+    .booking__soon::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.5); }
+
+    /* ── FOOTER ─────────────────────────────────────── */
+    /* ── INSTAGRAM SECTION ─────────────────────────── */
+    .ig-section {
+      background: var(--wine);
+      padding: 5rem 0;
+    }
+    .ig-section__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .ig-section__label {
+      font-size: 0.58rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: rgba(255,255,255,0.5); font-weight: 500;
+      display: block; margin-bottom: 1rem;
+    }
+    .ig-section__title {
+      font-family: 'Bebas Neue', 'Arial Narrow', Arial, sans-serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem); line-height: 1;
+      color: #fff; margin-bottom: 1.2rem;
+    }
+    .ig-section__desc {
+      font-size: 0.85rem; font-weight: 300; line-height: 1.85;
+      color: rgba(255,255,255,0.65); max-width: 360px;
+    }
+    .ig-section__right {
+      display: flex; justify-content: flex-end; align-items: center;
+    }
+    .ig-section__btn {
+      display: flex; align-items: center; gap: 1.2rem;
+      background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.2);
+      padding: 1.4rem 2rem;
+      transition: background 0.3s, border-color 0.3s;
+      text-decoration: none;
+    }
+    .ig-section__btn:hover {
+      background: rgba(0,0,0,0.45);
+      border-color: rgba(255,255,255,0.5);
+    }
+    .ig-section__btn-icon {
+      flex-shrink: 0;
+      width: 44px; height: 44px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ig-section__btn-icon svg { width: 20px; height: 20px; fill: #fff; }
+    .ig-section__btn-text { display: flex; flex-direction: column; gap: 0.2rem; }
+    .ig-section__handle {
+      font-family: 'Bebas Neue', 'Arial Narrow', Arial, sans-serif;
+      font-size: 1.4rem; letter-spacing: 0.06em; color: #fff; line-height: 1;
+    }
+    .ig-section__action {
+      font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: rgba(255,255,255,0.55); font-weight: 400;
+    }
+    @media (max-width: 768px) {
+      .ig-section__inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .ig-section__right { justify-content: flex-start; }
+    }
+
+    .footer { background: #000; color: #fff; padding: 5rem 0 2.5rem; border-top: 1px solid rgba(255,255,255,0.04); }
+    .footer__inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
+    /* Logo en footer — mismo que nav pero un poco más grande */
+    /* Logo footer — PNG cuadrado con padding, mostramos más ancho */
+    .footer__logo { overflow: hidden; height: 36px; margin-bottom: 1.5rem; }
+    .footer__logo img { height: 100px; width: auto; margin-top: -33px; opacity: 0.9; }
+    .footer__logo-fallback { font-family: 'Bebas Neue', 'Arial Narrow', Arial, sans-serif; font-size: 2rem; letter-spacing: 0.12em; margin-bottom: 0.3rem; display: block; }
+    .footer__logo-sub { font-size: 0.5rem; letter-spacing: 0.35em; text-transform: uppercase; opacity: 0.3; display: block; margin-bottom: 1.5rem; }
+    .footer__tagline { font-size: 0.78rem; font-weight: 300; line-height: 1.8; opacity: 0.4; max-width: 260px; }
+    .footer__col-title { font-size: 0.55rem; letter-spacing: 0.25em; text-transform: uppercase; opacity: 0.3; font-weight: 500; margin-bottom: 1.5rem; display: block; }
+    .footer__links { display: flex; flex-direction: column; gap: 0.65rem; }
+    .footer__link { font-size: 0.78rem; font-weight: 300; opacity: 0.5; transition: opacity 0.3s; }
+    .footer__link:hover { opacity: 1; }
+    .footer__bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    .footer__copy { font-size: 0.62rem; opacity: 0.2; letter-spacing: 0.04em; }
+    .footer__wine-bar { width: 28px; height: 1px; background: var(--wine); opacity: 0.6; }
+
+    /* ── ANIMATIONS ─────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.25; }
+      50%       { opacity: 0.6; }
+    }
+
+    /* ── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 900px) {
+      .about__inner    { grid-template-columns: 1fr; }
+      .about__visual   { aspect-ratio: 4/5; max-height: 420px; }
+      .about__pillars  { grid-template-columns: repeat(3,1fr); }
+      .raffle__inner   { grid-template-columns: 1fr; gap: 3.5rem; }
+      .footer__inner   { grid-template-columns: 1fr 1fr; }
+      .footer__brand   { grid-column: 1/-1; }
+      .location__opening { text-align: left; }
+    }
+    @media (max-width: 640px) {
+      .treatments__grid { grid-template-columns: 1fr; }
+      .footer__inner    { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer__bottom   { flex-direction: column; gap: 1rem; text-align: center; }
+      .hero__line, .hero__line-r { display: none; }
+      .nav__badge { display: none; }
+      :root { --nav-h: 64px; }
+      .section { padding: 4.5rem 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════ NAV ════════════ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#" class="nav__logo" aria-label="Numen — inicio">
+        <img
+          src="img/logos/logo-blanco.png"
+          alt="Numen"
+          id="nav-logo-img"
+          onerror="this.style.display='none'; document.getElementById('nav-logo-fb').style.display='block';"
+        >
+        <span class="nav__logo-fallback" id="nav-logo-fb">NUMEN</span>
+      </a>
+      <div class="nav__right">
+        <span class="nav__badge">Apertura 2026</span>
+        <a href="https://www.instagram.com/numen.clinic" target="_blank" rel="noopener" class="nav__ig" aria-label="Instagram @numen.clinic">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="#sorteo" class="nav__cta">Sorteo VIP</a>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ════════════ HERO ════════════ -->
+  <section class="hero" aria-label="Portada">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__line" aria-hidden="true"></div>
+    <div class="hero__line-r" aria-hidden="true"></div>
+
+    <div class="hero__content">
+      <p class="hero__pre">Centro de Bienestar &amp; Wellness · Madrid</p>
+
+      <!-- Logo grande hero -->
+      <div class="hero__logo-wrap">
+        <img
+          src="img/logos/logo-blanco.png"
+          alt="Numen"
+          class="hero__logo-img"
+          id="hero-logo-img"
+          onerror="this.style.display='none'; document.getElementById('hero-logo-fb').style.display='block';"
+        >
+        <h1 class="hero__brand-text" id="hero-logo-fb">NUMEN</h1>
+      </div>
+
+      <p class="hero__clinic">Medical Clinic · Centro de Bienestar &amp; Wellness</p>
+      <div class="hero__sep" aria-hidden="true"></div>
+
+      <p class="hero__desc">
+        Un espacio donde cuidar de ti es lo más importante.<br>
+        Medicina estética y Wellness se encuentran en un mismo lugar
+        para ofrecerte una experiencia premium diseñada a tu medida.<br><br>
+        Salud integral · Bienestar · Cuerpo · Mente · Well-aging.<br><br>
+        Conocimiento y atención al detalle en cada experiencia.<br>
+      </p>
+
+      <div class="hero__cta">
+        <a href="#sorteo" class="btn btn--wine">Sorteo de inauguración</a>
+        <a href="#nosotros" class="btn btn--ghost">Descubrir</a>
+      </div>
+
+      <p class="hero__location">Madrid · Próxima apertura</p>
+    </div>
+
+    <div class="hero__scroll" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="hero__scroll-bar"></div>
+    </div>
+  </section>
+
+
+  <!-- ════════════ QUIÉNES SOMOS ════════════ -->
+  <section class="about section" id="nosotros">
+    <div class="container">
+      <div class="about__inner">
+
+        <div class="about__visual reveal">
+          <img src="img/foto-about.jpg" alt="" aria-hidden="true">
+          <!-- Monograma NM superpuesto -->
+          <div class="about__monogram">
+            <img src="img/logos/monograma-nm.png" alt="" aria-hidden="true">
+          </div>
+          <div class="about__overlay"></div>
+        </div>
+
+        <div class="about__text">
+          <span class="section__label reveal">Centro de Bienestar &amp; Wellness</span>
+          <h2 class="about__title reveal d1">
+            Tu mejor versión,<br><span>de forma natural</span>
+          </h2>
+          <div class="divider reveal d2"></div>
+          <p class="about__body reveal d2">
+            Porque cuidarte no debería ser solo una rutina.<br>
+            Debería ser una experiencia Numen.
+          </p>
+
+          <div class="about__pillars reveal d4">
+            <div class="about__pillar">
+              <span class="about__pillar-icon">✦</span>
+              <span class="about__pillar-label">Medicina Estética</span>
+            </div>
+            <div class="about__pillar">
+              <span class="about__pillar-icon">✦</span>
+              <span class="about__pillar-label">Bienestar Integral</span>
+            </div>
+            <div class="about__pillar">
+              <span class="about__pillar-icon">✦</span>
+              <span class="about__pillar-label">Alta Calidad</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════ LOCALIZACIÓN ════════════ -->
+  <section class="location" id="donde">
+    <div class="container">
+      <div class="location__inner">
+        <div class="location__text reveal">
+          <span class="section__label">Dónde estamos</span>
+          <p class="location__address">
+            Calle Narváez 6<br>
+            Valdemoro
+          </p>
+          <p class="location__detail">Madrid · España</p>
+        </div>
+        <div class="location__opening reveal d2">
+          <span class="location__opening-label">Apertura</span>
+          <p class="location__opening-date">2026</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════ SORTEO VIP ════════════ -->
+  <section class="raffle" id="sorteo">
+    <div class="container">
+      <div class="raffle__inner">
+
+        <!-- Info -->
+        <div class="raffle__info">
+          <span class="raffle__eyebrow reveal">Inauguración exclusiva</span>
+          <h2 class="raffle__title reveal d1">
+            Sé de los<br>primeros en<br>vivirlo
+          </h2>
+
+          <div class="raffle__prize reveal d2">
+            <span class="raffle__prize-label">Premio · 2 invitaciones</span>
+            <p class="raffle__prize-title">Noche de apertura VIP</p>
+            <p class="raffle__prize-desc">
+              Dos entradas para una noche de inauguración privada muy especial. 
+              Podrás conocer más de cerca el espacio, nuestros tratamientos, a los profesionales, participar en nuevos sorteos y regalos exclusivos.
+              <br>
+              <br>
+              Cuéntanos quien eres y qué te gustaría encontrar en Numen
+            </p>
+          </div>
+
+          <p class="raffle__desc reveal d3">
+            Participa en el sorteo completando el formulario. Sortearemos
+            las invitaciones entre todos los participantes una semana antes
+            de la apertura y te avisaremos por email.
+          </p>
+        </div>
+
+        <!-- Formulario -->
+        <div class="reveal d2">
+          <div class="raffle__form-box">
+            <span class="raffle__form-heading">Inscripción al sorteo VIP</span>
+
+            <form
+              id="raffle-form"
+              action="https://formspree.io/f/maenbjvd"
+              method="POST"
+              novalidate
+            >
+              <!-- Campo honeypot anti-spam (oculto) -->
+              <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+              <div class="fg">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required autocomplete="given-name">
+                <span class="err-msg">Campo obligatorio</span>
+              </div>
+
+              <div class="fg">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="tu@email.com" required autocomplete="email">
+                <span class="err-msg">Introduce un email válido</span>
+              </div>
+
+              <div class="fg">
+                <label for="pregunta">¿Qué esperas encontrar en Numen?</label>
+                <textarea id="pregunta" name="pregunta" placeholder="Cuéntanos brevemente…" rows="3" required></textarea>
+                <span class="err-msg">Por favor, responde la pregunta</span>
+              </div>
+
+              <div class="form-submit-wrap">
+                <button type="submit" class="btn btn--wine" id="submit-btn">
+                  Participar en el sorteo
+                </button>
+              </div>
+
+              <p class="form-legal">
+                Tus datos se utilizarán únicamente para gestionar el sorteo y enviarte
+                comunicaciones de Numen. Puedes darte de baja en cualquier momento.
+                Tratamiento conforme al RGPD.
+              </p>
+            </form>
+
+            <div class="raffle__success" id="raffle-success">
+              <p class="raffle__success-icon">✦</p>
+              <h3 class="raffle__success-title">¡Ya participas!</h3>
+              <p class="raffle__success-text">
+                Hemos recibido tu inscripción.<br>
+                Te avisaremos por email si eres el afortunado.<br>
+                Hasta entonces, ¡mucha suerte!
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════ TRATAMIENTOS ════════════ -->
+  <section class="treatments section" id="tratamientos">
+    <div class="container">
+
+      <div class="treatments__header">
+        <span class="section__label reveal">Lo que encontrarás</span>
+        <h2 class="section__title reveal d1">Tratamientos &amp; Bienestar</h2>
+        <div class="divider divider--center reveal d2"></div>
+        <p class="treatments__subtitle reveal d2">
+          Una selección de tratamientos de medicina estética avanzada
+          y programas de bienestar personalizados para cada persona.
+        </p>
+      </div>
+
+      <div class="treatments__grid">
+        <div class="t-card reveal">
+          <div class="t-card__num">01</div>
+          <div class="t-card__bar"></div>
+          <h3 class="t-card__title">Medicina Estética</h3>
+          <p class="t-card__desc">Neurotoxina, ácido hialurónico, well aging, armonización, polinucleótidos, vitaminas y tratamientos faciales y corporales diseñados para ti.</p>
+          <span class="t-card__tag">Próximamente</span>
+        </div>
+        <div class="t-card reveal d1">
+          <div class="t-card__num">02</div>
+          <div class="t-card__bar"></div>
+          <h3 class="t-card__title">Medicina Regenerativa</h3>
+          <p class="t-card__desc">Plasma rico en plaquetas y tratamientos enfocados en estimular los procesos naturales de regeneración de la piel y frenar el envejecimiento.</p>
+          <span class="t-card__tag">Próximamente</span>
+        </div>
+        <div class="t-card reveal d2">
+          <div class="t-card__num">03</div>
+          <div class="t-card__bar"></div>
+          <h3 class="t-card__title">Wellness &amp; Bienestar</h3>
+          <p class="t-card__desc">Masajes, rituales y programas personalizados para cuidarte, desconectar y regalar bienestar a quien más quieres.</p>
+          <span class="t-card__tag">Próximamente</span>
+        </div>
+        <div class="t-card reveal d3">
+          <div class="t-card__num">04</div>
+          <div class="t-card__bar"></div>
+          <h3 class="t-card__title">Experiencias &amp; Eventos</h3>
+          <p class="t-card__desc">Eventos, encuentros y experiencias exclusivas donde hablaremos y aprenderemos sobre el autocuidado y el estilo de vida saludable.</p>
+          <span class="t-card__tag">Próximamente</span>
+        </div>
+        <div class="t-card reveal">
+          <div class="t-card__num">05</div>
+          <div class="t-card__bar"></div>
+          <h3 class="t-card__title">Skincare &amp; Nutricosmética</h3>
+          <p class="t-card__desc">Una selección de cosmética y nutricosmética adaptada a ti, para que aprendas a cuidar tu piel cada día.</p>
+          <span class="t-card__tag">Próximamente</span>
+        </div>
+        <div class="t-card reveal d1">
+          <div class="t-card__num">06</div>
+          <div class="t-card__bar"></div>
+          <h3 class="t-card__title">Women's Health</h3>
+          <p class="t-card__desc">Un espacio dedicado a la mujer, con atención al parto, postparto y aquellas etapas donde tu cuerpo necesita un mimo especial.</p>
+          <span class="t-card__tag">Próximamente</span>
+        </div>
+        <div class="t-card reveal d2">
+          <div class="t-card__num">07</div>
+          <div class="t-card__bar"></div>
+          <h3 class="t-card__title">Salud Capilar</h3>
+          <p class="t-card__desc">Diagnóstico y tratamientos enfocados en la salud, calidad y bienestar de tu cabello y cuero cabelludo.</p>
+          <span class="t-card__tag">Próximamente</span>
+        </div>
+        <div class="t-card reveal d3">
+          <div class="t-card__num">08</div>
+          <div class="t-card__bar"></div>
+          <h3 class="t-card__title">Maternidad &amp; Primeros Cuidados</h3>
+          <p class="t-card__desc">Asesoramiento en lactancia y primera puesta de pendientes, con un cuidado cercano, seguro y respetuoso para ti y tu bebé.</p>
+          <span class="t-card__tag">Próximamente</span>
+        </div>
+      </div>
+
+      <div class="treatments__note reveal">
+        <p>Catálogo completo disponible en la apertura</p>
+        <a href="#sorteo" class="btn btn--ghost-dark">Participar en el sorteo de apertura</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════ AGENDA TU CITA ════════════ -->
+  <section class="booking" id="cita">
+    <div class="booking__inner">
+      <span class="booking__eyebrow reveal">Muy pronto</span>
+      <h2 class="booking__title reveal d1">Agenda<br>tu cita</h2>
+      <p class="booking__desc reveal d2">
+        En breve podrás reservar tu consulta online con nuestro equipo de especialistas.
+        Mientras tanto, forma parte de nuestra comunidad participando en el sorteo de inauguración.
+      </p>
+      <div class="reveal d3">
+        <span class="booking__soon">Reservas · Próximamente</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════ INSTAGRAM ════════════ -->
+  <section class="ig-section">
+    <div class="container ig-section__inner">
+      <div class="ig-section__left reveal">
+        <span class="ig-section__label">@numen.clinic · Síguenos</span>
+        <h2 class="ig-section__title">No te pierdas<br>nada</h2>
+        <p class="ig-section__desc">
+          Behind the scenes de nuestra apertura, primeras plazas,
+          contenido exclusivo y las novedades antes que nadie.<br>
+          <strong style="opacity:0.7; font-weight:500;">Todo pasa primero en Instagram.</strong>
+        </p>
+      </div>
+      <div class="ig-section__right reveal d1">
+        <a href="https://www.instagram.com/numen.clinic" target="_blank" rel="noopener" class="ig-section__btn" aria-label="Seguir @numen.clinic en Instagram">
+          <span class="ig-section__btn-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </span>
+          <span class="ig-section__btn-text">
+            <span class="ig-section__handle">@numen.clinic</span>
+            <span class="ig-section__action">Seguir en Instagram →</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ FOOTER ════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <img
+              src="img/logos/logo-blanco.png"
+              alt="Numen"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+            >
+            <span class="footer__logo-fallback" style="display:none;">NUMEN</span>
+            <span class="footer__logo-sub">Medical Clinic · Centro de Bienestar &amp; Wellness</span>
+          </div>
+          <p class="footer__tagline">
+            Medicina estética de alta calidad y bienestar integral.
+            Un espacio diseñado para tu mejor versión.
+          </p>
+        </div>
+
+        <div>
+          <span class="footer__col-title">Secciones</span>
+          <nav class="footer__links" aria-label="Footer nav">
+            <a href="#nosotros"     class="footer__link">Quiénes somos</a>
+            <a href="#donde"        class="footer__link">Dónde estamos</a>
+            <a href="#sorteo"       class="footer__link">Sorteo VIP</a>
+            <a href="#tratamientos" class="footer__link">Tratamientos</a>
+            <a href="#cita"         class="footer__link">Agenda tu cita</a>
+          </nav>
+        </div>
+
+        <div>
+          <span class="footer__col-title">Contacto</span>
+          <div class="footer__links">
+            <!-- ▶ PERSONALIZA con datos reales -->
+            <!-- ▶ Actualiza el email cuando lo tengas -->
+           <!-- <span class="footer__link">contacto@numenmedicalclinic.es</span>-->
+            <a href="https://www.numenmedicalclinic.es" class="footer__link">www.numenmedicalclinic.es</a>
+            <span class="footer__link">Calle Narváez 6, Valdemoro · Madrid</span>
+            <a href="https://www.instagram.com/numen.clinic" target="_blank" rel="noopener" class="footer__link footer__ig-link">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:12px;height:12px;fill:currentColor;display:inline-block;vertical-align:middle;margin-right:0.4rem;opacity:0.7;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              @numen.clinic
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <span class="footer__copy">© 2026 Numen Medical Clinic · Todos los derechos reservados</span>
+        <span class="footer__wine-bar" aria-hidden="true"></span>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* ── Nav scroll ── */
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+
+    /* ── Scroll reveal ── */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    /* ── Formulario ── */
+    const form = document.getElementById('raffle-form');
+    const successBox = document.getElementById('raffle-success');
+
+    if (form) {
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+        let ok = true;
+
+        form.querySelectorAll('[required]').forEach(field => {
+          const err = field.parentElement.querySelector('.err-msg');
+          field.classList.remove('err');
+          if (err) err.classList.remove('show');
+
+          if (!field.value.trim()) {
+            field.classList.add('err');
+            if (err) err.classList.add('show');
+            ok = false;
+          } else if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
+            field.classList.add('err');
+            if (err) { err.textContent = 'Email no válido'; err.classList.add('show'); }
+            ok = false;
+          }
+        });
+
+        if (!ok) return;
+
+        const btn = document.getElementById('submit-btn');
+        btn.textContent = 'Enviando…';
+        btn.disabled = true;
+
+        // Si el action tiene Formspree real, envía; si no, simula
+        const action = form.action;
+        if (action && action.includes('formspree.io') && !action.includes('TU_ID')) {
+          try {
+            const data = new FormData(form);
+            const res = await fetch(action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+            if (res.ok) {
+              form.style.display = 'none';
+              successBox.classList.add('show');
+            } else {
+              btn.textContent = 'Error — inténtalo de nuevo';
+              btn.disabled = false;
+            }
+          } catch {
+            btn.textContent = 'Error de red — inténtalo de nuevo';
+            btn.disabled = false;
+          }
+        } else {
+          // Modo demo (sin Formspree configurado)
+          setTimeout(() => {
+            form.style.display = 'none';
+            successBox.classList.add('show');
+          }, 800);
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
