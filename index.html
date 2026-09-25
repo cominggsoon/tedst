@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -26,6 +27,15 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/fonts.css">
+
+  <!-- Google tag (gtag.js) — Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9DQ3HTP6N4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9DQ3HTP6N4');
+  </script>
 
   <style>
     /* ── BASE ──────────────────────────────────────── */
@@ -112,23 +122,29 @@
     .hero {
       min-height: 100vh;
       background: var(--black);
-      display: flex; align-items: center; justify-content: center;
+      display: flex; flex-direction: column; align-items: center; justify-content: space-between;
       position: relative; overflow: hidden;
-      padding-top: var(--nav-h);
+      padding-top: calc(var(--nav-h) + 2rem);
+      padding-bottom: 5rem;
     }
-    /* Foto de fondo */
+    /* Foto de fondo — img real para control preciso */
     .hero__bg {
       position: absolute; inset: 0;
-      background-image: url('img/foto-hero.jpg');
-      background-size: cover; background-position: center 20%;
-      opacity: 0.32; /* sutil — la foto respira sin ahogar el texto */
+      overflow: hidden;
+    }
+    .hero__bg img {
+      position: absolute;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 60%;
+      opacity: 0.42;
     }
     /* Overlay oscuro + gradiente vino abajo */
     .hero::before {
       content: '';
       position: absolute; inset: 0; z-index: 1;
       background:
-        linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.6) 100%),
+        linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0.5) 100%),
         radial-gradient(ellipse 80% 40% at 50% 100%, rgba(73,22,32,0.45) 0%, transparent 70%);
       pointer-events: none;
     }
@@ -149,13 +165,21 @@
       text-align: center; z-index: 2;
       padding: 0 2rem; max-width: 860px; position: relative;
     }
+    .hero__top {
+      text-align: center; z-index: 2;
+      padding: 0 2rem; max-width: 860px; position: relative;
+    }
+    .hero__bottom {
+      text-align: center; z-index: 2;
+      padding: 0 2rem; max-width: 860px; position: relative;
+    }
 
     /* Pre-label */
     .hero__pre {
       font-size: 0.6rem; letter-spacing: 0.45em; text-transform: uppercase;
       color: rgba(255,255,255,0.55); font-weight: 500;
       display: flex; align-items: center; justify-content: center; gap: 1rem;
-      margin-bottom: 3rem;
+      margin-bottom: 1.5rem;
       opacity: 0; animation: fadeUp 1s var(--ease) 0.2s forwards;
     }
     .hero__pre::before, .hero__pre::after {
@@ -165,14 +189,13 @@
 
     /* Logo principal — imagen */
     .hero__logo-wrap {
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.5rem;
       opacity: 0; animation: fadeUp 1.2s var(--ease) 0.4s forwards;
     }
     .hero__logo-img {
-      /* PNG cuadrado con padding — mostramos ancho total para que el texto sea grande */
-      width: clamp(280px, 50vw, 560px);
+      width: clamp(200px, 38vw, 420px);
       height: auto;
-      margin: -4% auto; /* recorta el espacio superior e inferior del PNG */
+      margin: -5% auto;
     }
     /* Fallback tipográfico si la imagen no carga */
     .hero__brand-text {
@@ -186,15 +209,15 @@
     .hero__clinic {
       font-size: clamp(0.55rem, 1.1vw, 0.75rem); letter-spacing: 0.5em;
       text-transform: uppercase; font-weight: 400; color: rgba(255,255,255,0.5);
-      margin-bottom: 3.5rem;
+      margin-bottom: 0;
       opacity: 0; animation: fadeUp 1s var(--ease) 0.7s forwards;
     }
 
     /* Separador */
     .hero__sep {
-      width: 1px; height: 50px;
+      width: 1px; height: 40px;
       background: linear-gradient(to bottom, var(--wine), transparent);
-      margin: 0 auto 3rem;
+      margin: 0 auto 1.5rem;
       opacity: 0; animation: fadeUp 1s var(--ease) 0.9s forwards;
     }
 
@@ -202,10 +225,12 @@
     .hero__desc {
       font-size: clamp(0.85rem, 1.5vw, 1rem); font-weight: 300;
       line-height: 1.95; color: rgba(255,255,255,0.65);
-      max-width: 500px; margin: 0 auto 3rem;
+      max-width: 500px; margin: 0 auto 1.5rem;
       letter-spacing: 0.02em;
       opacity: 0; animation: fadeUp 1s var(--ease) 1.1s forwards;
     }
+    .hero__desc--top { margin-bottom: 0; }
+    .hero__desc--bottom { margin-bottom: 1.5rem; }
 
     /* CTAs */
     .hero__cta {
@@ -216,7 +241,7 @@
 
     /* Localización debajo de los CTAs */
     .hero__location {
-      margin-top: 3rem;
+      margin-top: 1.5rem;
       font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
       opacity: 0.3; font-weight: 400;
       opacity: 0; animation: fadeIn 1s var(--ease) 1.8s forwards;
@@ -310,8 +335,8 @@
     }
     .about__visual .about__monogram img {
       width: 70%; height: auto; object-fit: initial;
-      opacity: 0.18;
-      mix-blend-mode: soft-light;
+      opacity: 0.45;
+      mix-blend-mode: screen;
       filter: invert(1);
     }
     /* Gradiente sutil en la parte baja */
@@ -399,7 +424,18 @@
       font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1;
       margin-bottom: 1.5rem;
     }
-    .raffle__desc { font-size: 0.88rem; font-weight: 300; line-height: 1.9; opacity: 0.6; margin-bottom: 2.5rem; }
+    .raffle__desc { font-size: 0.88rem; font-weight: 300; line-height: 1.9; opacity: 0.6; margin-bottom: 1.5rem; }
+    .raffle__ig-tip {
+      display: flex; align-items: flex-start; gap: 0.8rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .raffle__ig-tip-icon { color: var(--wine); flex-shrink: 0; margin-top: 0.1rem; }
+    .raffle__ig-tip p { font-size: 0.82rem; font-weight: 300; line-height: 1.75; opacity: 0.7; }
+    .raffle__ig-tip-link { color: #fff; text-decoration: underline; text-underline-offset: 3px; opacity: 0.9; transition: opacity 0.2s; }
+    .raffle__ig-tip-link:hover { opacity: 1; }
 
     /* Premio destacado */
     .raffle__prize {
@@ -447,6 +483,46 @@
     .form-submit-wrap { margin-top: 0.5rem; }
     .form-submit-wrap .btn { width: 100%; text-align: center; }
     .form-legal { font-size: 0.58rem; opacity: 0.25; line-height: 1.6; margin-top: 1rem; text-align: center; }
+
+    /* Select */
+    .fg select {
+      width: 100%; background: transparent;
+      border: none; border-bottom: 1px solid rgba(255,255,255,0.12);
+      color: #fff; font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem; font-weight: 300;
+      padding: 0.7rem 0; outline: none;
+      cursor: pointer;
+      transition: border-color 0.3s var(--ease);
+      -webkit-appearance: none; appearance: none;
+    }
+    .fg select option { background: #1a0a0d; color: #fff; }
+    .fg select:focus { border-bottom-color: var(--wine); }
+    .fg select.err { border-bottom-color: #c0392b; }
+    .fg .select-wrap { position: relative; }
+    .fg .select-wrap::after {
+      content: '↓'; position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+      font-size: 0.7rem; opacity: 0.35; pointer-events: none;
+    }
+
+    /* Checkboxes */
+    .fg .checks { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.6rem; }
+    .fg .check-item { display: flex; align-items: center; gap: 0.75rem; cursor: pointer; }
+    .fg .check-item input[type="checkbox"] { display: none; }
+    .fg .check-box {
+      width: 14px; height: 14px; flex-shrink: 0;
+      border: 1px solid rgba(255,255,255,0.25);
+      position: relative; transition: border-color 0.2s;
+    }
+    .fg .check-item input[type="checkbox"]:checked ~ .check-box {
+      border-color: var(--wine); background: var(--wine);
+    }
+    .fg .check-item input[type="checkbox"]:checked ~ .check-box::after {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 10 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4l3 3 5-6' stroke='%23fff' stroke-width='1.5' fill='none'/%3E%3C/svg%3E") center/8px no-repeat;
+    }
+    .fg .check-label { font-size: 0.78rem; font-weight: 300; opacity: 0.7; }
+    .fg .checks.err-group ~ .err-msg { display: none; }
+    .fg .checks.err-group.err ~ .err-msg { display: block; }
 
     /* Éxito */
     .raffle__success { display: none; text-align: center; padding: 3rem 0; }
@@ -595,6 +671,13 @@
       .nav__badge { display: none; }
       :root { --nav-h: 64px; }
       .section { padding: 4.5rem 0; }
+      /* Botón nav en móvil */
+      .nav__cta {
+        font-size: 0.58rem;
+        padding: 0.45rem 0.85rem;
+        letter-spacing: 0.12em;
+        white-space: nowrap;
+      }
     }
   </style>
 </head>
@@ -625,14 +708,15 @@
 
   <!-- ════════════ HERO ════════════ -->
   <section class="hero" aria-label="Portada">
-    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__bg" aria-hidden="true">
+      <img src="img/foto-hero.jpg" alt="">
+    </div>
     <div class="hero__line" aria-hidden="true"></div>
     <div class="hero__line-r" aria-hidden="true"></div>
 
-    <div class="hero__content">
+    <!-- BLOQUE SUPERIOR: logo + primer párrafo -->
+    <div class="hero__top">
       <p class="hero__pre">Centro de Bienestar &amp; Wellness · Madrid</p>
-
-      <!-- Logo grande hero -->
       <div class="hero__logo-wrap">
         <img
           src="img/logos/logo-blanco.png"
@@ -643,24 +727,26 @@
         >
         <h1 class="hero__brand-text" id="hero-logo-fb">NUMEN</h1>
       </div>
-
       <p class="hero__clinic">Medical Clinic · Centro de Bienestar &amp; Wellness</p>
-      <div class="hero__sep" aria-hidden="true"></div>
 
-      <p class="hero__desc">
-        Un espacio donde cuidar de ti es lo más importante.<br>
-        Medicina estética y Wellness se encuentran en un mismo lugar
-        para ofrecerte una experiencia premium diseñada a tu medida.<br><br>
-        Salud integral · Bienestar · Cuerpo · Mente · Well-aging.<br><br>
-        Conocimiento y atención al detalle en cada experiencia.<br>
+    </div>
+
+    <!-- 💋 labio libre aquí -->
+
+    <!-- BLOQUE INFERIOR: resto + CTAs -->
+    <div class="hero__bottom">
+        <p class="hero__desc" style="margin-bottom:0; margin-top: 0.8rem;">
+        Un espacio donde cuidar de ti es lo más importante.
+        Medicina estética y Wellness en un mismo lugar
+        para ofrecerte una experiencia premium diseñada a ti.
       </p>
-
+      <p class="hero__desc" style="margin-bottom: 1.5rem;">
+        Salud integral · Bienestar · Cuerpo · Mente · Well-aging.
+      </p>
       <div class="hero__cta">
         <a href="#sorteo" class="btn btn--wine">Sorteo de inauguración</a>
         <a href="#nosotros" class="btn btn--ghost">Descubrir</a>
       </div>
-
-      <p class="hero__location">Madrid · Próxima apertura</p>
     </div>
 
     <div class="hero__scroll" aria-hidden="true">
@@ -766,6 +852,11 @@
             las invitaciones entre todos los participantes una semana antes
             de la apertura y te avisaremos por email.
           </p>
+
+          <div class="raffle__ig-tip reveal d3">
+            <span class="raffle__ig-tip-icon">✦</span>
+            <p>Seguirnos en Instagram <a href="https://www.instagram.com/numen.clinic" target="_blank" rel="noopener" class="raffle__ig-tip-link">@numen.clinic</a> aumenta tus posibilidades de ganar — los seguidores tienen prioridad en el sorteo.</p>
+          </div>
         </div>
 
         <!-- Formulario -->
@@ -795,9 +886,65 @@
               </div>
 
               <div class="fg">
-                <label for="pregunta">¿Qué esperas encontrar en Numen?</label>
-                <textarea id="pregunta" name="pregunta" placeholder="Cuéntanos brevemente…" rows="3" required></textarea>
-                <span class="err-msg">Por favor, responde la pregunta</span>
+                <label for="edad">¿Cuántos años tienes?</label>
+                <div class="select-wrap">
+                  <select id="edad" name="edad" required>
+                    <option value="" disabled selected>Selecciona tu rango de edad</option>
+                    <option value="18-25">18 – 25 años</option>
+                    <option value="26-35">26 – 35 años</option>
+                    <option value="36-45">36 – 45 años</option>
+                    <option value="46-55">46 – 55 años</option>
+                    <option value="55+">Más de 55 años</option>
+                  </select>
+                </div>
+                <span class="err-msg">Por favor, selecciona tu edad</span>
+              </div>
+
+              <div class="fg" id="fg-tratamientos">
+                <label>¿Qué te interesa más? <span style="opacity:0.4">(puedes marcar varios)</span></label>
+                <div class="checks" id="checks-tratamientos">
+                  <label class="check-item">
+                    <input type="checkbox" name="interes[]" value="Medicina estética facial">
+                    <span class="check-box"></span>
+                    <span class="check-label">Medicina estética facial</span>
+                  </label>
+                  <label class="check-item">
+                    <input type="checkbox" name="interes[]" value="Rellenos y volumen">
+                    <span class="check-box"></span>
+                    <span class="check-label">Rellenos y volumen</span>
+                  </label>
+                  <label class="check-item">
+                    <input type="checkbox" name="interes[]" value="Eliminación de manchas y rejuvenecimiento">
+                    <span class="check-box"></span>
+                    <span class="check-label">Eliminación de manchas y rejuvenecimiento</span>
+                  </label>
+                  <label class="check-item">
+                    <input type="checkbox" name="interes[]" value="Pérdida de peso y nutrición">
+                    <span class="check-box"></span>
+                    <span class="check-label">Pérdida de peso y nutrición</span>
+                  </label>
+                  <label class="check-item">
+                    <input type="checkbox" name="interes[]" value="Bienestar y wellness">
+                    <span class="check-box"></span>
+                    <span class="check-label">Bienestar y wellness</span>
+                  </label>
+                  <label class="check-item">
+                    <input type="checkbox" name="interes[]" value="Well-aging y antiaging">
+                    <span class="check-box"></span>
+                    <span class="check-label">Well-aging y antiaging</span>
+                  </label>
+                  <label class="check-item">
+                    <input type="checkbox" name="interes[]" value="Todavía no lo sé">
+                    <span class="check-box"></span>
+                    <span class="check-label">Todavía no lo sé</span>
+                  </label>
+                </div>
+                <span class="err-msg">Marca al menos una opción</span>
+              </div>
+
+              <div class="fg">
+                <label for="expectativas">¿Qué te gustaría encontrar en Numen? <span style="opacity:0.4">(opcional)</span></label>
+                <textarea id="expectativas" name="expectativas" placeholder="Cuéntanos qué buscas, qué te preocupa o qué tratamiento te llama la atención…" rows="3"></textarea>
               </div>
 
               <div class="form-submit-wrap">
@@ -831,7 +978,7 @@
 
 
   <!-- ════════════ TRATAMIENTOS ════════════ -->
-  <section class="treatments section" id="tratamientos">
+  <section class="treatments section section--light" id="tratamientos">
     <div class="container">
 
       <div class="treatments__header">
@@ -1034,8 +1181,10 @@
         e.preventDefault();
         let ok = true;
 
-        form.querySelectorAll('[required]').forEach(field => {
-          const err = field.parentElement.querySelector('.err-msg');
+        // Validar campos required normales (texto, email, select)
+        form.querySelectorAll('input[required], select[required], textarea[required]').forEach(field => {
+          const fg = field.closest('.fg');
+          const err = fg ? fg.querySelector('.err-msg') : null;
           field.classList.remove('err');
           if (err) err.classList.remove('show');
 
@@ -1049,6 +1198,16 @@
             ok = false;
           }
         });
+
+        // Validar checkboxes: al menos uno marcado
+        const checksGroup = document.getElementById('checks-tratamientos');
+        const checksErr = document.getElementById('fg-tratamientos').querySelector('.err-msg');
+        const anyChecked = checksGroup.querySelector('input[type="checkbox"]:checked');
+        checksErr.classList.remove('show');
+        if (!anyChecked) {
+          checksErr.classList.add('show');
+          ok = false;
+        }
 
         if (!ok) return;
 
